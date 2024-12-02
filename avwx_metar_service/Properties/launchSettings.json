@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "avwx_metar_service": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
