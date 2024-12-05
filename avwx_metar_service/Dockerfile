@@ -11,7 +11,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["avwx_metar_service/avwx_metar_service.csproj", "avwx_metar_service/"]
-RUN dotnet restore "./avwx_metar_service/avwx_metar_service.csproj"
+# RUN dotnet restore "./avwx_metar_service/avwx_metar_service.csproj"
 COPY . .
 WORKDIR "/src/avwx_metar_service"
 RUN dotnet build "./avwx_metar_service.csproj" -c $BUILD_CONFIGURATION -o /app/build

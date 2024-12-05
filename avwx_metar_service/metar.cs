@@ -9,6 +9,8 @@ namespace avwx_metar_service
 {
     public class Metar
     {
+        public int Id { get; set; }
+
         [JsonPropertyName("station")]
         public required string Station { get; set; }
 
@@ -22,7 +24,7 @@ namespace avwx_metar_service
         public required WindSpeed WindSpeed { get; set; }
 
         [JsonPropertyName("visibility")]
-        public required Visibility Visibility { get; set; }
+        public required Visibility Visibility { get; set; } = new Visibility { Value = -1 };
 
         [JsonPropertyName("wx_codes")]
         public required List<WxCode> WxCodes { get; set; }
@@ -39,6 +41,9 @@ namespace avwx_metar_service
         [JsonPropertyName("altimeter")]
         public required Altimeter Altimeter { get; set; }
 
+        [JsonPropertyName("raw")]
+        public required string Raw { get; set; }
+
     }
 
     public class Time
@@ -49,8 +54,8 @@ namespace avwx_metar_service
 
     public class WindDirection
     {
-        [JsonPropertyName("value")]
-        public required int Value { get; set; }
+        [JsonPropertyName("repr")]
+        public required string Value { get; set; }
     }
 
     public class WindSpeed
@@ -61,18 +66,26 @@ namespace avwx_metar_service
 
     public class Visibility
     {
+        private int _value;
+
         [JsonPropertyName("value")]
-        public required int Value { get; set; }
+        public int Value {
+            get => _value;
+            set => _value = value == 0 ? -1 : value; }
     }
 
     public class WxCode
     {
+        public int Id { get; set; }
+
         [JsonPropertyName("repr")]
         public required string Value { get; set; }
     }
 
     public class Cloud
     {
+        public int Id { get; set; }
+
         [JsonPropertyName("type")]
         public required string Type { get; set; }
         [JsonPropertyName("altitude")]
