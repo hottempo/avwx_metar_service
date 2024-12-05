@@ -44,6 +44,8 @@ namespace avwx_metar_service
         [JsonPropertyName("raw")]
         public required string Raw { get; set; }
 
+        public string Source { get; set; } = "avwx";
+
     }
 
     public class Time
