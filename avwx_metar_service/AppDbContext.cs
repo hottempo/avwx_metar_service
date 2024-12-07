@@ -5,11 +5,10 @@ public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-    public DbSet<Metar> Metars { get; set; } // Replace `Metar` with your actual model
+    public DbSet<Metar> Metars { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Configure owned types or complex relationships here if needed
         modelBuilder.Entity<Metar>(entity =>
         {
             entity.OwnsOne(m => m.Time);
