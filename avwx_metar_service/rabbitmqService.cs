@@ -26,7 +26,7 @@ public class RabbitMQService
         using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
 
-        // Declare the queue (in case it doesn't exist yet)
+        // Declare the queue
         channel.QueueDeclare(
             queue: _queueName,
             durable: true,
@@ -35,8 +35,6 @@ public class RabbitMQService
             arguments: null);
 
         // Serialize the Metar object to JSON
-
-
         var messageBody = JsonSerializer.Serialize(message, new JsonSerializerOptions
         {
             WriteIndented = false,
